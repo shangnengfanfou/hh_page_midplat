@@ -1,0 +1,11 @@
+{
+  "name": "hh_page_midplat",
+  "version": "1.0.0",
+  "description": "hh_page nodejs中台",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

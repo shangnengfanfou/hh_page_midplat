@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "allowJs": true,
+    "resolveJsonModule":true,
+    "baseUrl":".",
+    "paths":{
+      "@node_server/*": ["./node_server/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "node_server/**/*",
+  ]
+}

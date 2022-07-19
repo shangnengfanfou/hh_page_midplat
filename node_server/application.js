@@ -23,7 +23,9 @@ class Application extends events_1.EventEmitter {
     }
     listen(port, host = '0.0.0.0') {
         this.server = http.createServer(this.callback());
-        return this.server.listen(port, host);
+        return this.server.listen(port, host, () => {
+            console.log('\x1B[32m%s\x1B[0m', `server lister on ${host}:${port}`);
+        });
     }
     callback() {
         if (!this.listenerCount('error'))

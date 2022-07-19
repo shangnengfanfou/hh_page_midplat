@@ -16,6 +16,7 @@
     "url": "https://gitee.com/haoqian1/hh_page_midplat.git"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "module-alias": "^2.2.2"
   },
   "devDependencies": {

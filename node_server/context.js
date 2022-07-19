@@ -285,6 +285,7 @@ class Context {
     sendFile(prefix, root) {
         let exp = new RegExp(`^${prefix}`);
         let target = this.url.replace(exp, '');
+        target = decodeURI(target);
         let file = path.join(root, target);
         if (file.startsWith(root) === false) {
             this.res.statusCode = 403;

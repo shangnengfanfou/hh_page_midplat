@@ -88,17 +88,18 @@ export class ArticleController {
   }
 
   @Get('/:id')
-  async getArticle(@Param('id') id: string, @Ctx() ctx: Context) {
-    const getPage = (id: string): Promise<Buffer> => {
+  async getArticle(@Param('id') id: string, @Ctx() ctx: Context, @Query('filename') filename: string, @Query('time') time: string) {
+    const getPage = (id: string, filename: string, time: string): Promise<Buffer> => {
       return new Promise((resolve, reject) => {
-        const dir = path.join(__dirname, `../../public/2022-7/测试文2323.md`)
+        filename = filename.split('.').shift()
+        const dir = path.join(__dirname, `../../public/${time}/${filename}-${id}.md`)
         fs.readFile(dir, (err, data) => {
           if (err) reject(err)
           resolve(data)
         })
       })
     }
-    const buf =  await getPage(id)
+    const buf =  await getPage(id, filename, time)
     return {
       content: buf.toString('base64')
     }

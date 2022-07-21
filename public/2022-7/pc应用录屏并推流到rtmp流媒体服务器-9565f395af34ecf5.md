@@ -1,4 +1,5 @@
-# pc应用录屏并推流到rtmp流媒体服务器
+# unity应用录屏并推流到rtmp流媒体服务器
+---
 ## 工具
 ffmpeg 、c#
 ## 原理介绍
@@ -8,7 +9,7 @@ ffmpeg 、c#
 官网下载ffmpeg windows工具
 下载地址：[https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z)
 可以看到bin文件夹中有三个文件：见下图
-![image.png](http://127.0.0.1:8090/views/img/1658302192_02e658e74346d58d.png){{{width="600px" height="auto"}}}
+![image.png](http://10.226.11.52:8090/views/img/1658302192_02e658e74346d58d.png){{{width="600px" height="auto"}}}
 将bin文件夹拷贝到unity的StreamingAssets文件夹，并将文件夹改名为ffmpeg
 这里介绍下三个文件
 ```

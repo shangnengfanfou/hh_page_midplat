@@ -27,7 +27,7 @@ const saveImg = (buf: Buffer) => {
     const dir = path.join(__dirname, `../../public/img/${timestamp}_${filename}.png`)
     fs.writeFile(dir, buf, (err) => {
       if(err) reject(err)
-      resolve(`http://127.0.0.1:8090/views/img/${timestamp}_${filename}.png`)
+      resolve(`http://10.226.11.52:8090/views/img/${timestamp}_${filename}.png`)
     })
   })
 }
@@ -87,6 +87,16 @@ export class ArticleController {
     return {}
   }
 
+  @Post('/page')
+  async getArticlePage(@Ctx() ctx: Context) {
+    ctx.proxy('http://127.0.0.1:8091/api/post/page')
+  }
+
+  @Get('/info')
+  async getArticleInfo(@Ctx() ctx: Context) {
+    ctx.proxy('http://127.0.0.1:8091/api/post/info')
+  }
+  
   @Get('/:id')
   async getArticle(@Param('id') id: string, @Ctx() ctx: Context, @Query('filename') filename: string, @Query('time') time: string) {
     const getPage = (id: string, filename: string, time: string): Promise<Buffer> => {
@@ -100,13 +110,12 @@ export class ArticleController {
       })
     }
     const buf =  await getPage(id, filename, time)
+    await axios({
+      method: 'GET',
+      url: `http://127.0.0.1:8091/api/post/view/${id}`,
+    })
     return {
       content: buf.toString('base64')
     }
-  }
-
-  @Post('/page')
-  async getArticlePage(@Ctx() ctx: Context) {
-    ctx.proxy('http://127.0.0.1:8091/api/post/page')
   }
 }

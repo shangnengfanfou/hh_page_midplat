@@ -3,6 +3,7 @@ import * as crypto from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
 import axios from 'axios'
+import config  from '../config'
 
 class FileUploadDto {
   title: string
@@ -27,7 +28,7 @@ const saveImg = (buf: Buffer) => {
     const dir = path.join(__dirname, `../../public/img/${timestamp}_${filename}.png`)
     fs.writeFile(dir, buf, (err) => {
       if(err) reject(err)
-      resolve(`http://10.226.11.52:8090/views/img/${timestamp}_${filename}.png`)
+      resolve(`${config.nodeServer}/views/img/${timestamp}_${filename}.png`)
     })
   })
 }
@@ -72,7 +73,7 @@ export class ArticleController {
     const bannerUrl = await saveImg(bufImg)
     await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:8091/api/post/add',
+      url: `${config.goServer}/api/post/add`,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -89,12 +90,12 @@ export class ArticleController {
 
   @Post('/page')
   async getArticlePage(@Ctx() ctx: Context) {
-    ctx.proxy('http://127.0.0.1:8091/api/post/page')
+    ctx.proxy(`${config.goServer}/api/post/page`)
   }
 
   @Get('/info')
   async getArticleInfo(@Ctx() ctx: Context) {
-    ctx.proxy('http://127.0.0.1:8091/api/post/info')
+    ctx.proxy(`${config.goServer}/api/post/info`)
   }
   
   @Get('/:id')
@@ -112,7 +113,7 @@ export class ArticleController {
     const buf =  await getPage(id, filename, time)
     await axios({
       method: 'GET',
-      url: `http://127.0.0.1:8091/api/post/view/${id}`,
+      url: `${config.goServer}/api/post/view/${id}`,
     })
     return {
       content: buf.toString('base64')

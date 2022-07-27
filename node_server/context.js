@@ -90,9 +90,8 @@ class Context {
                 chunks.push(chunk);
                 size += chunk.length;
                 // 限制POST JSON的数据大小
-                if (size > 1024 * 1024 * 2) {
-                    this.res.statusCode = 413;
-                    reject(413);
+                if (size > 1024 * 1024 * 20) {
+                    reject({statusCode: 413});
                 }
             });
             // request数据发送完

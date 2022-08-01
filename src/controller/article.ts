@@ -78,7 +78,7 @@ export class ArticleController {
         'Content-Type': 'application/json'
       },
       data: {
-        tagId: 1,
+        tagId: parseInt(body.tag),
         uniqueId: fileUniqueId,
         title,
         summary,
@@ -113,7 +113,7 @@ export class ArticleController {
     const buf =  await getPage(id, filename, time)
     await axios({
       method: 'GET',
-      url: `${config.goServer}/api/post/view/${id}`,
+      url: `${config.goServer}/api/post/view/${id}`
     })
     return {
       content: buf.toString('base64')

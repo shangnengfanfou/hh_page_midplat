@@ -33,7 +33,7 @@ export class UserController {
             HK: "全棧工程師 | 金山辦公-二次開發生態",
             US: "Full-Stack engineer | Kingsoft Office-Secondary Development Ecology"
           },
-          token: crypto.randomBytes(16).toString('hex'),
+          token: 'Authorization:' + crypto.randomBytes(16).toString('hex'),
           expireAt: new Date(new Date().getTime() + 24* 60 * 60 * 1000)
         }
       }

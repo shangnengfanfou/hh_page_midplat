@@ -5,13 +5,13 @@ HH_PAGE是一个带有博客功能的[个人主页项目](http://blog.haoqian.ic
 
 #### 本仓库介绍
 nodejs中台服务：
-    [*] 静态资源的管理
-    [*] 接口代理
-    [] 接口加密(todo)
-    [] 权限控制(todo)
-    [] 接口聚合(todo)
+    - [x] 静态资源的管理
+    - [x] 接口代理
+    - [] 接口加密(todo)
+    - [] 权限控制(todo)
+    - [] 接口聚合(todo)
 
 
 #### 软件架构
 HH_PAGE架构如图
-![架构图](http://blog.haoqian.icu:8090/views/img/1658927391_94dfe85990e0cbb6.png)
+![输入图片说明](public/image.png)

@@ -7,9 +7,9 @@ HH_PAGE是一个带有博客功能的[个人主页项目](http://blog.haoqian.ic
 nodejs中台服务：
 - [x] 静态资源的管理
 - [x] 接口代理
-- [] 接口加密(todo)
-- [] 权限控制(todo)
-- [] 接口聚合(todo)
+- [ ] 接口加密(todo)
+- [ ] 权限控制(todo)
+- [ ] 接口聚合(todo)
 
 
 #### 软件架构
